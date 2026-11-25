@@ -335,3 +335,14 @@ a.card { display: block; color: var(--text); }
   .player.empty { aspect-ratio: auto; min-height: 330px; }
   .player.empty video { display: none; }
 }
+
+/* Бейнені ауыстыру және сақтау */
+.video-manage { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; align-items: center; margin-top: 14px; }
+.link-btn {
+  background: none; border: none; color: var(--accent); font-family: var(--font-body);
+  font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 4px 2px; border-bottom: 1px dashed currentColor;
+}
+.link-btn:hover { opacity: 0.75; }
+.link-btn[hidden] { display: none; }
+.save-status { font-size: 0.82rem; color: var(--muted); }
+.avatar-box.no-video .video-manage { display: none; }

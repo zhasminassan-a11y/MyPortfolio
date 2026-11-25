@@ -60,8 +60,8 @@
           <p class="section-sub" style="margin:0 auto 36px">Өзім туралы қысқаша бейнетаныстырылым</p>
         </div>
         <div class="avatar-box reveal">
-          <div class="player" id="player">
-            <video id="avatarVideo" preload="metadata" playsinline poster="images/profile.jpg">
+          <div class="player" id="player" style="aspect-ratio:480 / 848; max-width:340px; margin:0 auto">
+            <video id="avatarVideo" preload="metadata" playsinline poster="images/avatar-poster.jpg">
               <source src="videos/avatar.mp4" type="video/mp4">
               Браузеріңіз бейнені қолдамайды.
             </video>
@@ -92,6 +92,13 @@
           <div class="player-buttons">
             <button class="btn btn-primary" id="playSound">🔊 Дыбыспен көру</button>
             <button class="btn btn-outline" id="playMuted">🔇 Дыбыссыз көру</button>
+          </div>
+          <div class="video-manage">
+            <label class="link-btn">🔄 Бейнені ауыстыру
+              <input type="file" id="videoChange" accept="video/mp4,video/*" hidden>
+            </label>
+            <button class="link-btn" id="videoReset" hidden>↩ Бастапқы бейнеге қайтару</button>
+            <span class="save-status" id="saveStatus"></span>
           </div>
           <div class="ai-note">🤖 Бұл бейне HeyGen платформасында жасанды интеллект көмегімен жасалған</div>
         </div>

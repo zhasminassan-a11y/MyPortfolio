@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (video.videoWidth && video.videoHeight) {
         player.style.aspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
         const vertical = video.videoHeight > video.videoWidth;
-        player.style.maxWidth = vertical ? "420px" : "";
+        player.style.maxWidth = vertical ? "340px" : "";
         player.style.margin = vertical ? "0 auto" : "";
       }
       updateTime();
@@ -163,14 +163,78 @@ document.addEventListener("DOMContentLoaded", () => {
       video.play();
     });
 
-    // Файлды компьютерден таңдап, алдын ала көру (тек осы браузерде)
-    if (picker) {
-      picker.addEventListener("change", () => {
-        const file = picker.files[0];
-        if (!file) return;
-        video.src = URL.createObjectURL(file);
-        video.load();
+    // ===== Бейнені ауыстыру және сақтау =====
+    // Таңдалған бейне браузердің IndexedDB қоймасында сақталады,
+    // сондықтан бетті қайта ашқанда да сол бейне көрсетіледі.
+    const changeInput = document.getElementById("videoChange");
+    const resetBtn = document.getElementById("videoReset");
+    const status = document.getElementById("saveStatus");
+    const DB_NAME = "avatarDB", STORE = "videos", KEY = "custom";
+
+    const openDB = () => new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = () => req.result.createObjectStore(STORE);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    const dbAction = async (mode, action) => {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, mode);
+        const req = action(tx.objectStore(STORE));
+        tx.oncomplete = () => resolve(req && req.result);
+        tx.onerror = () => reject(tx.error);
       });
+    };
+    const saveVideo = (blob) => dbAction("readwrite", s => s.put(blob, KEY));
+    const loadVideo = () => dbAction("readonly", s => s.get(KEY));
+    const deleteVideo = () => dbAction("readwrite", s => s.delete(KEY));
+
+    let currentUrl = null;
+    const showBlob = (blob) => {
+      if (currentUrl) URL.revokeObjectURL(currentUrl);
+      currentUrl = URL.createObjectURL(blob);
+      video.src = currentUrl;
+      video.load();
+      if (resetBtn) resetBtn.hidden = false;
+    };
+    const setStatus = (text) => {
+      if (!status) return;
+      status.textContent = text;
+      clearTimeout(setStatus.t);
+      setStatus.t = setTimeout(() => (status.textContent = ""), 4000);
+    };
+
+    const handleFile = async (input) => {
+      const file = input.files[0];
+      if (!file) return;
+      showBlob(file);
+      try {
+        await saveVideo(file);
+        setStatus("✓ Бейне сақталды");
+      } catch (e) {
+        setStatus("Бейне көрсетілді, бірақ сақталмады");
+      }
+      input.value = "";
+    };
+    if (changeInput) changeInput.addEventListener("change", () => handleFile(changeInput));
+    if (picker) picker.addEventListener("change", () => handleFile(picker));
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", async () => {
+        try { await deleteVideo(); } catch (e) {}
+        if (currentUrl) URL.revokeObjectURL(currentUrl);
+        currentUrl = null;
+        video.removeAttribute("src");   // қайтадан videos/avatar.mp4 файлы қолданылады
+        video.load();
+        resetBtn.hidden = true;
+        setStatus("Бастапқы бейне қайтарылды");
+      });
+    }
+
+    // Бет ашылғанда сақталған бейне бар-жоғын тексеру
+    if (window.indexedDB) {
+      loadVideo().then(blob => { if (blob) showBlob(blob); }).catch(() => {});
     }
     updateMute();
   }
