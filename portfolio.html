@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио | Асан Жасмин</title>
+  <meta name="description" content="Асан Жасминнің жобалары, жетістіктері және сертификаттары">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo">Жасмин<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Басты бет</a></li>
+        <li><a href="about.html">Мен туралы</a></li>
+        <li><a href="skills.html">Дағдылар</a></li>
+        <li><a href="portfolio.html">Портфолио</a></li>
+        <li><a href="contact.html">Байланыс</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Режимді ауыстыру">☾</button>
+        <button class="icon-btn burger" id="burger" aria-label="Мәзір">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container reveal">
+        <span class="tag">Portfolio</span>
+        <h1>Жобалар мен жетістіктер</h1>
+        <p>Көшбасшылық бағдарламалар, байқаулар және сертификаттар</p>
+        <a href="documents/portfolio.pdf" class="btn btn-primary" style="margin-top:22px" download="Asan_Zhasmin_portfolio.pdf">📘 Портфолионы PDF етіп жүктеу</a>
+      </div>
+    </section>
+
+    <section style="padding-top:20px">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="card reveal">
+            <div class="icon">🥇</div>
+            <h3>Презентация байқауы — I орын</h3>
+            <p>«Ұлы тарих кемел келешекке жетелейді» тақырыбындағы презентация байқауында бірінші орын алдым.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🌍</div>
+            <h3>GeOnline Scholarship</h3>
+            <p>Бағдарламаның екінші кезеңінен (Talent Contest) сәтті өттім.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🕊</div>
+            <h3>«Жаңа Ұрпақ» көшбасшылық мектебі</h3>
+            <p>«Қанат» бағдарламасының I модулін (46 сағат) және «Тәлімгерлік курсын» аяқтадым.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">✈</div>
+            <h3>Прагадағы тіл курсы</h3>
+            <p>2025 жылы 7–23 шілдеде Jipka тіл мектебінде General English – Intermediate курсын бітірдім.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--bg-soft)">
+      <div class="container">
+        <div class="reveal" style="text-align:center">
+          <span class="tag">Сертификаттар</span>
+          <h2 class="section-title">Сертификаттар мен марапаттар</h2>
+          <p class="section-sub" style="margin:0 auto 30px">Суретті басып, үлкейтіп көріңіз</p>
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Барлығы</button>
+          <button class="filter-btn" data-filter="leader">Көшбасшылық</button>
+          <button class="filter-btn" data-filter="lang">Тіл</button>
+          <button class="filter-btn" data-filter="school">Мектеп</button>
+        </div>
+        <div class="grid grid-3">
+          <div class="card cert-card reveal" data-category="leader">
+            <div class="thumb"><img src="images/cert-qanat.jpg" alt="«Қанат» бағдарламасы, I модуль" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Көшбасшылық</span>
+              <h3>«Қанат» бағдарламасы, I модуль</h3>
+              <p>«Жаңа Ұрпақ» Республикалық көшбасшылық мектебі, 46 сағаттық оқу</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="leader">
+            <div class="thumb"><img src="images/cert-mentor.jpg" alt="«Тәлімгерлік курсы»" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Көшбасшылық</span>
+              <h3>«Тәлімгерлік курсы»</h3>
+              <p>«Жаңа Ұрпақ» Республикалық көшбасшылық мектебі, 2023</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="lang">
+            <div class="thumb"><img src="images/cert-jipka.jpg" alt="General English – Intermediate" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Тіл</span>
+              <h3>General English – Intermediate</h3>
+              <p>Jipka тіл мектебі, Прага, 7–23 шілде 2025</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="school">
+            <div class="thumb"><img src="images/cert-diploma.jpg" alt="I дәрежелі диплом" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Мектеп</span>
+              <h3>I дәрежелі диплом</h3>
+              <p>«Ұлы тарих кемел келешекке жетелейді» апталығы, 2024</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="school">
+            <div class="thumb"><img src="images/cert-maqtau.jpg" alt="Мақтау қағазы" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Мектеп</span>
+              <h3>Мақтау қағазы</h3>
+              <p>Үздік оқығаны және үлгілі тәртібі үшін</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="school">
+            <div class="thumb"><img src="images/cert-alghys.jpg" alt="Алғыс хат" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Мектеп</span>
+              <h3>Алғыс хат</h3>
+              <p>«Ана тілім, күмбірле сарайымда!» іс-шарасына белсенді қатысқаны үшін</p>
+            </div>
+          </div>
+          <div class="card cert-card reveal" data-category="school">
+            <div class="thumb"><img src="images/cert-gramota.jpg" alt="Грамота" loading="lazy"></div>
+            <div class="body">
+              <span class="meta">Мектеп</span>
+              <h3>Грамота</h3>
+              <p>Химия, биология, география пәндерінің онкүндігіне қатысқаны үшін, 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" aria-label="Жабу">×</button>
+      <img src="" alt="">
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html" class="logo">Жасмин<span>.</span></a>
+        <p>© <span id="year">2026</span> Асан Жасмин Ерғалиқызы. Барлық құқықтар қорғалған.</p>
+        <p>Сайт жасанды интеллект көмегімен әзірленді.</p>
+      </div>
+      <div class="socials">
+        <a href="https://instagram.com/zhasdamn_" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="mailto:asan.zhasmin08@mail.ru" aria-label="Email">@</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Жоғарыға">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>
